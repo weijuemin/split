@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: 
+  expense: one
+  paid: 1.5
+  amount: 1.5
+
+two:
+  user: 
+  expense: two
+  paid: 1.5
+  amount: 1.5
