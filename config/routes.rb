@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   post '/users/create' => 'users#create'
 
+  get '/users/' => 'users#show'
+
 	get 'group/:group_id' => 'groups#show'
 	get 'expense/:expense_id' => 'expenses#show'
 	get 'expense/:group_id/new' => 'expenses#new'
