@@ -1,1 +1,9 @@
-<h1>List of Expenses for </h1>
+<h1>List of Expenses for <%= @group.name %></h1>
+<% if @group.expenses %>
+	<ul>
+		<% @group.expenses.each do |expense| %>
+			<li><a href="/expense/<%= expense.id %>"><%= expense.name %></a></li>
+		<% end %>
+	</ul>
+<% end %>
+<a href="/expense/<%= @group.id %>/new">New Expense</a>
