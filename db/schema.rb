@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160823150934) do
+=======
+ActiveRecord::Schema.define(version: 20160823013150) do
+>>>>>>> d239e1ac4829b77b998b8c35f29368eb6c59dac0
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,8 +74,12 @@ ActiveRecord::Schema.define(version: 20160823150934) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "profilepic_file_name"
+    t.string   "profilepic_content_type"
+    t.integer  "profilepic_file_size"
+    t.datetime "profilepic_updated_at"
   end
 
   add_foreign_key "outstandings", "expenses"
