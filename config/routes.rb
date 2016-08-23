@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get '/users/' => 'users#show'
   get '/users/edit' => 'users#edit'
-  # patch "/users" => "users#update"
+  patch "/users/" => "users#update"
   get '/users/logout' => 'sessions#reset'
 
 	get '/group/:group_id' => 'groups#show'

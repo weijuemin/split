@@ -19,7 +19,7 @@
 	</form>
 </div>
 <div>
-	<%= if flash[:message] %>
+	<% if flash[:message] %>
 		<% flash[:message].each do |message| %>
 			<%=message%>
 		<% end %>

@@ -1,18 +1,21 @@
 <div class="main">
 	<div id="containerShowUser">
 		<div id="header">
+			<a href="/users/edit">Edit Your Profile</a>
+			<%= image_tag "#{@user.profilepic}" %>
 			<h2><b>Name: </b> <%=@user.first_name %> <%=@user.last_name %></h2>
 			<h3><b>Username: </b> <%=@user.username %></h3>
 			<h3><b>Email: </b> <%=@user.email %></h3>
-			<%= image_tag "#{@user.profilepic}" %>
+			
 		</div>
 		<div id="container">
 		</div>
 		<div id="messages">
-			<% flash[:message].each do |message| %>
-				<%=message %><br>
+			<% if flash[:message] %>
+				<% flash[:message].each do |message| %>
+					<%=message %><br>
+				<% end %>
 			<% end %>
 		</div>
-		<h3><a href="/users/<%=@user.id %>/edit">Edit Your Profile</a></h3>
 	</div>
 </div>

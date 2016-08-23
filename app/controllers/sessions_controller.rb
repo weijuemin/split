@@ -1,16 +1,10 @@
 class SessionsController < ApplicationController
   before_action :require_login, only: [:reset]
   def index
-  	if !flash[:message]
-  		flash[:message]=[""]
-  	end
   	render 'index.html'
   end
 
   def loginPage
-    if !flash[:message]
-      flash[:message]=[""]
-    end
     render 'login.html'
   end
 

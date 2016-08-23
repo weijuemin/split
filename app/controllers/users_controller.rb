@@ -14,14 +14,23 @@ class UsersController < ApplicationController
   end
 
   def show
-    if !flash[:message]
-      flash[:message] = [""]
-    end
     @user = current_user
     render 'users/user_show.html'
   end
 
   def edit
+    render 'edit.html'
   end
 
+  def update
+    @user = current_user
+    @user.update(first_name:params[:first_name],last_name:params[:last_name],username: params[:username],email:params[:email])
+    if @user.valid? == true
+      flash[:message] = ["User Updated"]
+      redirect_to action: :show
+    else
+      flash[:message] = @user.errors.full_messages
+      redirect_to action: :edit
+    end
+  end
 end

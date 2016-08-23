@@ -19,8 +19,10 @@
 			</form>
 		</div>
 		<div id="messages">
-			<% flash[:message].each do |message| %>
-				<%=message %><br>
+			<% if flash[:message] %>
+				<% flash[:message].each do |message| %>
+					<%=message %><br>
+				<% end %>
 			<% end %>
 		</div>
 		<a href="/">Not registered?</a>
