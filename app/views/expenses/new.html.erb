@@ -1,0 +1,19 @@
+<h1>New Expense</h1>
+<form action="/group/<%= @group.id %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<div>
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name">
+	</div>
+	<div>
+		<label for="amount">Amount:</label>
+		<input type="text" name="amount" id="amount">
+	</div>
+	<% @group.users.each do |user| %>
+		<div>
+			<label for="u<%= user.id %>"><%= user.first_name %> paid:</label>
+			<input type="text" name="u<%= user.id %>" id="u<%= user.id %>">
+		</div>
+	<% end %>
+	<input type="submit" value="Create">
+</form>

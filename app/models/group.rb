@@ -1,5 +1,4 @@
 class Group < ApplicationRecord
-<<<<<<< HEAD
 	has_many :expenses
 	has_many :user_groups
 	has_many :users, through: :user_groups
