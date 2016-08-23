@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 	
   root 'sessions#index'
 
+  get '/sessions/' => 'sessions#loginPage'
   post '/sessions/login' => 'sessions#login'
 
   post '/users/create' => 'users#create'
