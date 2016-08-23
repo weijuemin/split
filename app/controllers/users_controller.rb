@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    logged_in
     if !flash[:message]
       flash[:message] = [""]
     end
