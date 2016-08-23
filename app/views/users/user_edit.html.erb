@@ -1,0 +1,27 @@
+<div>
+	<form action="/users/<%=current_user.id %>" method="POST">
+		<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+		<input name="_method" type="hidden" value="PATCH"/>
+		
+		<label for="first_name" value="first_name"><h2>First Name</h2></label>
+		<input name="first_name" type="text" placeholder="first name">
+
+		<label for="last_name" value="last_name"><h2>Last Name</h2></label>
+		<input name="last_name" type="text" placeholder="last name">
+
+		<label for="username" value="username"><h2>User Name</h2></label>
+		<input name="ususernameer" type="text" placeholder="user name">
+		
+		<label for="email" value="email"><h2>Email</h2></label>
+		<input name="email" type="email" placeholder="email">
+		
+		<button type="submit" value="Update">Update</button>
+	</form>
+</div>
+<div>
+	<%= if flash[:message] %>
+		<% flash[:message].each do |message| %>
+			<%=message%>
+		<% end %>
+	<% end %>
+</div>
