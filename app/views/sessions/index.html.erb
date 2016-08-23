@@ -1,0 +1,60 @@
+<div class="main">
+		<div id="header">
+			<h2>Welcome!</h2>
+		</div>
+		<div id="container">
+			<div>
+				<h3>New Splitter Registration</h3>
+				<form action="/users/create" method="POST">
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+
+					<label for="first_name" value="First Name">First Name:</label>
+					<input name="first_name" placeholder="first name" type="text">
+
+					<label for="last_name" value="Last Name">Last Name:</label>
+					<input name="last_name" placeholder="last name" type="text">
+
+					<label for="email" value="Email Address">Email Address:</label>
+					<input name="email" placeholder="email address" type="text">
+
+					<label for="password" value="Password">Password:</label>
+					<input name="password" placeholder="password" type="password">
+
+					<label for="password_confirmation" value="Password">Confirm Password:</label>
+					<input name="password_confirmation" placeholder="password confirmation" type="password">
+					
+					<button type="submit" class="btn btn-default" value="register">Register</button>
+				</form>
+			</div>
+		</div>
+		</div>
+		<div id="container">
+			<div>
+				<h3>Splitter Login</h3>
+				<form action="/sessions/login" method="POST">
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">		
+
+					<label for="email" value="Email Address">Email Address:</label>
+					<input name="email" placeholder="email address" type="text">
+
+					<label for="password" value="Password">Password:</label>
+					<input name="password" placeholder="password" type="password">
+					
+					<button type="submit" class="btn btn-default" value="login">Login</button>
+				</form>
+			</div>
+		</div>
+		<div id="messages">
+			<% flash[:message].each do |message| %>
+				<%=message %><br>
+			<% end %>
+		</div>
+</div>
+
+
+
+
+
+
+
+
