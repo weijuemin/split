@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :require_login, only: [:reset]
   def index
   	if !flash[:message]
   		flash[:message]=[""]
@@ -27,6 +28,6 @@ class SessionsController < ApplicationController
 
   def reset
   	session.destroy
-  	redirect_to action: :index
+  	redirect_to "/sessions/"
   end
 end
