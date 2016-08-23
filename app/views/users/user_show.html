@@ -1,0 +1,22 @@
+<div class="main">
+		<div id="header">
+			<h2>Name: <%=@user.first_name %> <%=@user.last_name %></h2>
+			<h2>Email: <%=@user.email %></h2>
+		</div>
+		<div id="container">
+		</div>
+		<div id="messages">
+			<% flash[:message].each do |message| %>
+				<%=message %><br>
+			<% end %>
+		</div>
+</div>
+
+
+
+
+
+
+
+
+
