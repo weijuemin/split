@@ -1,19 +1,23 @@
-<h1>New Expense</h1>
-<form action="/group/<%= @group.id %>" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<div>
-		<label for="name">Name:</label>
-		<input type="text" name="name" id="name">
+<div id="main">
+	<div id="containerNewExp">
+		<h1>New Expense</h1>
+		<form action="/group/<%= @group.id %>" method="post">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input class="form-control" type="text" name="name" id="name">
+			</div>
+			<div class="form-group">
+				<label for="amount">Amount:</label>
+				<input class="form-control" type="text" name="amount" id="amount">
+			</div>
+			<% @group.users.each do |user| %>
+				<div class="form-group">
+					<label for="u<%= user.id %>"><%= user.first_name %> paid:</label>
+					<input class="form-control" type="text" name="u<%= user.id %>" id="u<%= user.id %>">
+				</div>
+			<% end %>
+			<button type="submit" class="btn btn-default" value="Create">Create</button>
+		</form>
 	</div>
-	<div>
-		<label for="amount">Amount:</label>
-		<input type="text" name="amount" id="amount">
-	</div>
-	<% @group.users.each do |user| %>
-		<div>
-			<label for="u<%= user.id %>"><%= user.first_name %> paid:</label>
-			<input type="text" name="u<%= user.id %>" id="u<%= user.id %>">
-		</div>
-	<% end %>
-	<input type="submit" value="Create">
-</form>
+</div>

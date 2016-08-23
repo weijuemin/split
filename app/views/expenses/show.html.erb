@@ -1,4 +1,6 @@
-<p><%= @exp.name %>:</p>
-<% @output.each do |o| %>
-<p>User <%= o[:owes].first_name %> <%= o[:owes].last_name %> owes user <%= o[:owed].first_name %> <%= o[:owed].last_name %> $<%= o[:amt] %></p>
-<% end -%>
+<div id="main">
+	<p><%= @exp.name %>:</p>
+	<% @output.each do |o| %>
+	<p>User <%= o[:owes].first_name %> <%= o[:owes].last_name %> owes user <%= o[:owed].first_name %> <%= o[:owed].last_name %> $<%= o[:amt] %></p>
+	<% end -%>
+</div>

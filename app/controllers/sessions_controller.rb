@@ -7,6 +7,9 @@ class SessionsController < ApplicationController
   end
 
   def loginPage
+    if !flash[:message]
+      flash[:message]=[""]
+    end
     render 'login.html'
   end
 
