@@ -5,26 +5,43 @@
 		<div id="container">
 			<div>
 				<h3>New Splitter Registration</h3>
-				<form action="/users/create" method="POST">
+				<form action="/users/create" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+					
+					<div class="form-group">
+						<label for="first_name" value="First Name">First Name:</label>
+						<input class="form-control" name="first_name" placeholder="first name" type="text">
+					</div>
+					
+					<div class="form-group">
+						<label for="last_name" value="Last Name">Last Name:</label>
+						<input class="form-control" name="last_name" placeholder="last name" type="text">
+					</div>
 
-					<label for="first_name" value="First Name">First Name:</label>
-					<input name="first_name" placeholder="first name" type="text">
+					<div class="form-group">
+						<label for="username" value="Last Name">User Name:</label>
+						<input class="form-control" name="username" placeholder="user name" type="text">
+					</div>
 
-					<label for="last_name" value="Last Name">Last Name:</label>
-					<input name="last_name" placeholder="last name" type="text">
+					<div class="form-group">
+						<label for="email" value="Email Address">Email Address:</label>
+						<input class="form-control" name="email" placeholder="email address" type="text">
+					</div>
 
-					<label for="username" value="Last Name">User Name:</label>
-					<input name="username" placeholder="user name" type="text">
-
-					<label for="email" value="Email Address">Email Address:</label>
-					<input name="email" placeholder="email address" type="text">
-
-					<label for="password" value="Password">Password:</label>
-					<input name="password" placeholder="password" type="password">
-
-					<label for="password_confirmation" value="Password">Confirm Password:</label>
-					<input name="password_confirmation" placeholder="password confirmation" type="password">
+					<div class="form-group">
+						<label for="profilepic" value="Profile picture">Profile picture:</label>
+						<input name="email" placeholder="email address" type="file">
+					</div>
+					
+					<div class="form-group">
+						<label for="password" value="Password">Password:</label>
+						<input class="form-control" name="password" placeholder="password" type="password">
+					</div>
+					
+					<div class="form-group">
+						<label for="password_confirmation" value="Password">Confirm Password:</label>
+						<input class="form-control" name="password_confirmation" placeholder="password confirmation" type="password">
+					</div>
 					
 					<button type="submit" class="btn btn-default" value="register">Register</button>
 				</form>
@@ -37,11 +54,15 @@
 				<form action="/sessions/login" method="POST">
 					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">		
 
+					<div class="form-group">
 					<label for="email" value="Email Address">Email Address:</label>
-					<input name="email" placeholder="email address" type="text">
+					<input class="form-control" name="email" placeholder="email address" type="text">
+					</div>
 
+					<div class="form-group">
 					<label for="password" value="Password">Password:</label>
-					<input name="password" placeholder="password" type="password">
+					<input class="form-control" name="password" placeholder="password" type="password">
+					</div>
 					
 					<button type="submit" class="btn btn-default" value="login">Login</button>
 				</form>
