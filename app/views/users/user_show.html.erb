@@ -3,6 +3,7 @@
 			<h2><b>Name: </b> <%=@user.first_name %> <%=@user.last_name %></h2>
 			<h3><b>Username: </b> <%=@user.username %></h3>
 			<h3><b>Email: </b> <%=@user.email %></h3>
+			<%= image_tag "#{@user.profilepic}" %>
 		</div>
 		<div id="container">
 		</div>
@@ -12,12 +13,3 @@
 			<% end %>
 		</div>
 </div>
-
-
-
-
-
-
-
-
-
