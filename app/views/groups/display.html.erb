@@ -1,7 +1,6 @@
 <div id="main">
 	<div id="containerGrp">
 		<h1 style="text-align: center;"><%= @user.first_name %>'s List of Groups</h1>
-		<a href="/users">Back</a>
 		<% if @groups %>
 			<ul>
 				<% @groups.each do |group| %>

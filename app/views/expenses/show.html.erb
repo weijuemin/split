@@ -1,7 +1,6 @@
 <div id="main">
 	<div id="containerExp">
-		<a href="/groups/<%= @exp.group.id %>">Back</a>
-		<p><%= @exp.name %>: $<%= @exp.amount %></p>
+		<p><b><%= @exp.name %>: </b>$<%= @exp.amount %></p>
 		<% @record.each do |r| %>
 			<p><%= r.user.first_name %> <%= r.user.last_name %> paid <%= r.paid %></p>
 		<% end %>
