@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
       redirect_to "/sessions/"
     end
   end
+
+  def logged_in
+    result = (session[:user_id] != nil) ? true : false
+  end
 end
