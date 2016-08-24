@@ -1,13 +1,14 @@
 <div id="main">
 	<div id="containerGrp">
 		<h1>List of Expenses for <%= @group.name %></h1>
+		<a href="/groups">Back</a>
 		<% if @group.expenses %>
 			<ul>
 				<% @group.expenses.each do |expense| %>
-					<li><a href="/expense/<%= expense.id %>"><%= expense.name %></a></li>
+					<li><a href="/expenses/<%= expense.id %>"><%= expense.name %></a></li>
 				<% end %>
 			</ul>
 		<% end %>
-		<a href="/expense/<%= @group.id %>/new">New Expense</a>
+		<a href="/expenses/<%= @group.id %>/new">New Expense</a>
 	</div>
 </div>

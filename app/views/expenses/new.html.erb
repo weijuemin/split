@@ -1,7 +1,13 @@
 <div id="main">
 	<div id="containerNewExp">
 		<h1>New Expense</h1>
-		<form action="/group/<%= @group.id %>" method="post">
+		<% if flash[:errors] %>
+			<% flash[:errors].each do |error| %>
+				<p><%= error %></p>
+			<% end %>
+		<% end %>
+		<a href="/groups/<%= @group.id %>">Back</a>
+		<form action="/expenses/<%= @group.id %>" method="post">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<div class="form-group">
 				<label for="name">Name:</label>
