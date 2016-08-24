@@ -1,10 +1,12 @@
 <div id="main">
-	<a href="/groups/<%= @exp.group.id %>">Back</a>
-	<p><%= @exp.name %>: $<%= @exp.amount %></p>
-	<% @record.each do |r| %>
-		<p><%= r.user.first_name %> <%= r.user.last_name %> paid <%= r.paid %></p>
-	<% end %>
-	<% @output.each do |o| %>
-		<p><%= o[:owes].first_name %> <%= o[:owes].last_name %> owes <%= o[:owed].first_name %> <%= o[:owed].last_name %> $<%= o[:amt] %></p>
-	<% end %>
+	<div id="containerExp">
+		<a href="/groups/<%= @exp.group.id %>">Back</a>
+		<p><%= @exp.name %>: $<%= @exp.amount %></p>
+		<% @record.each do |r| %>
+			<p><%= r.user.first_name %> <%= r.user.last_name %> paid <%= r.paid %></p>
+		<% end %>
+		<% @output.each do |o| %>
+			<p><%= o[:owes].first_name %> <%= o[:owes].last_name %> owes <%= o[:owed].first_name %> <%= o[:owed].last_name %> $<%= o[:amt] %></p>
+		<% end %>
+	</div>
 </div>

@@ -2,7 +2,7 @@
 	<div id="containerShowUser">
 		<div id="header">
 			<a href="/users/edit">Edit Your Profile</a>
-			<%= image_tag "#{@user.profilepic}" %>
+			<%= image_tag "#{@user.profilepic}", class: "userpic" %>
 			<h2><b>Name: </b> <%=@user.first_name %> <%=@user.last_name %></h2>
 			<h3><b>Username: </b> <%=@user.username %></h3>
 			<h3><b>Email: </b> <%=@user.email %></h3>

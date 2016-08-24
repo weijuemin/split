@@ -1,11 +1,17 @@
 class SessionsController < ApplicationController
   before_action :require_login, only: [:reset]
   def index
-  	render 'index.html'
+    if logged_in
+      redirect_to "/users"
+    end
   end
 
   def loginPage
-    render 'login.html'
+    if logged_in
+      redirect_to "/users"
+    else
+      render 'login.html'
+    end
   end
 
   def login
@@ -21,7 +27,9 @@ class SessionsController < ApplicationController
   end
 
   def reset
-  	session.destroy
-  	redirect_to "/sessions/"
+    if logged_in
+    	session.destroy
+    	redirect_to "/sessions/"
+    end
   end
 end

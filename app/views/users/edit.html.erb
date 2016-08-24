@@ -1,7 +1,7 @@
 <div id="main">
 	<div id="containerShowUser">
 		<h2>Edit your profile:</h2>
-		<form action="/users/" method="POST">
+		<form action="/users/" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 			<input name="_method" type="hidden" value="PATCH"/>
 			
