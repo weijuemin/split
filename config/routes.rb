@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   get '/groups' => 'groups#display'
   get '/groups/:group_id' => 'groups#show'
+  post "/groups" => "groups#create"
+  patch "/groups" => "groups#addmember"
+  get "/getusers" => "groups#getUsers"
+
   get '/expenses/:expense_id' => 'expenses#show'
   get '/expenses/:group_id/new' => 'expenses#new'
   post '/expenses/:group_id' => 'expenses#create'

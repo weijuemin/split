@@ -6,3 +6,41 @@
 	width: 425px;
 	margin: 0 auto;	
 }
+.modalWrap, .modalWrap1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(80,80,80,.9);
+  z-index: 10;
+
+}
+@mixin modal {
+  position: fixed;
+  padding: 2% 1%;
+  background-color: rgb(53,70,92);
+  border-radius: 5px;
+  text-align: center;
+  top: 20%;
+  z-index: 11;
+  label {
+    color: #fff;
+  }
+}
+h3, h2 {
+  text-align: center
+}
+.modal1, .modal {
+  @include modal;
+}
+.modal {
+  height: 40%;
+}
+.showUsers {
+  color: #fff;
+}
+.adduser {
+  margin-top: 0;
+  margin-bottom: 0;
+}
