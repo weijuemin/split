@@ -2,6 +2,7 @@ class ExpensesController < ApplicationController
 	def new
 		@group = Group.find(params[:group_id])
 	end
+
 	def create
 		group = Group.find(params[:group_id])
 		expense = Expense.create(name:params[:name], amount:params[:amount], completed:false, group:group)
@@ -21,42 +22,41 @@ class ExpensesController < ApplicationController
 
 	def show
 	    @exp = Expense.find(params[:expense_id])
-	    @group = @exp.group
-	    @counter = (0...@group.users.count).to_a
+	    @record = Record.where(expense:@exp).where("paid > 0")
+	    outstanding(@exp)
+	end
 
-	    allrecord = Record.where(expense: @exp).all
+	private
+	def outstanding exp
+	    allrecord = Record.where(expense: exp)
 	    owes, owed = [], []
 
 	    allrecord.each do |r|
-	      diff = r.paid - r.amount
-	      if diff < 0
-	        owes << {:user => r.user, :diff => diff}
-	      elsif diff > 0
-	        owed << {:user => r.user, :diff => diff}
+	      if r.diff < 0
+	        owes << {:user => r.user, :diff => r.diff}
+	      elsif r.diff > 0
+	        owed << {:user => r.user, :diff => r.diff}
 	      end
 	    end
 
-	    @output =[]
-	    p, n = owed, owes
+	    @output = []
 
-	    puts p
-	    puts n
-	    while 0<p.length || 0<n.length
-	      if p[0][:diff] < n[0][:diff].abs
-	        amt = p[0][:diff]
-	        @output << {:owes =>n[0][:user], :owed =>p[0][:user], :amt => amt}
-	        n[0][:diff] += p[0][:diff]
-	        p.shift
-	      elsif p[0][:diff] > n[0][:diff].abs
-	        amt = n[0][:diff].abs
-	        @output << {:owes =>n[0][:user], :owed =>p[0][:user], :amt => amt}
-	        p[0][:diff] += n[0][:diff]
-	        n.shift
-	      elsif p[0][:diff] = n[0][:diff].abs
-	        amt = p[0][:diff]
-	        @output << {:owes =>n[0][:user], :owed =>p[0][:user], :amt => amt}
-	        p.shift
-	        n.shift
+	    while 0<owed.length || 0<owes.length
+	      if owed[0][:diff] < owes[0][:diff].abs
+	        amt = owed[0][:diff]
+	        @output << {:owes =>owes[0][:user], :owed =>owed[0][:user], :amt => amt}
+	        owes[0][:diff] += owed[0][:diff]
+	        owed.shift
+	      elsif owed[0][:diff] > owes[0][:diff].abs
+	        amt = owes[0][:diff].abs
+	        @output << {:owes =>owes[0][:user], :owed =>owed[0][:user], :amt => amt}
+	        owed[0][:diff] += owes[0][:diff]
+	        owes.shift
+	      else
+	        amt = owed[0][:diff]
+	        @output << {:owes =>owes[0][:user], :owed =>owed[0][:user], :amt => amt}
+	        owed.shift
+	        owes.shift
 	      end
 	    end
 	    @output

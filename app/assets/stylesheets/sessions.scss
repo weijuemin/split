@@ -6,15 +6,32 @@ input {
 	display: block;
 }
 button {
-	margin-top: 10px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 15px;
+	width: 150px;
 }
 
 #main {
 	width: 900px;
 	margin: 0 auto;
 }
+	#containerIndex {
+		text-align: center;
+		width: 300px;
+		margin: 0 auto;	
+	}
+	#containerRegister {
+		width: 500px;
+		margin: 0 auto;
+	}
 	#containerLogin {
 		width: 225px;
 		margin: 0 auto;
+	}
+	#messages {
+		font-weight: bold;
+		color: red;
+		text-align: center;
 	}
 

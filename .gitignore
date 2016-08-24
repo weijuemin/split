@@ -19,3 +19,5 @@
 
 # Ignore 'database.yml' file:
 /config/database.yml
+
+public/system/users/profilepics/000/000/001/original

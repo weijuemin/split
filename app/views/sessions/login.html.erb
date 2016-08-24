@@ -1,6 +1,7 @@
 <div id="main">
 	<div id="containerLogin">
 		<div>
+			<a href="/">Not registered?</a>
 			<h3>Splitter Login</h3>
 			<form action="/sessions/login" method="POST">
 				<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">		
@@ -25,6 +26,5 @@
 				<% end %>
 			<% end %>
 		</div>
-		<a href="/">Not registered?</a>
 	</div>
 </div>
