@@ -6,6 +6,21 @@
 	width: 425px;
 	margin: 0 auto;	
 }
+h3, h2 {
+  text-align: center
+}
+@mixin modal {
+  position: fixed;
+  top: 25%;
+  padding: 2% 1%;
+  background-color: rgb(53,70,92);
+  border-radius: 5px;
+  text-align: center;
+  z-index: 20;
+  label {
+    color: #fff;
+  }
+}
 .modalWrap, .modalWrap1 {
   position: fixed;
   top: 0;
@@ -15,21 +30,6 @@
   background-color: rgba(80,80,80,.9);
   z-index: 10;
 
-}
-@mixin modal {
-  position: fixed;
-  padding: 2% 1%;
-  background-color: rgb(53,70,92);
-  border-radius: 5px;
-  text-align: center;
-  top: 20%;
-  z-index: 11;
-  label {
-    color: #fff;
-  }
-}
-h3, h2 {
-  text-align: center
 }
 .modal1, .modal {
   @include modal;
@@ -43,4 +43,19 @@ h3, h2 {
 .adduser {
   margin-top: 0;
   margin-bottom: 0;
+}
+.name {
+  font-size: 12px;
+}
+.uobj {
+  border: none;
+  background: rgba(200,200,200,.5);
+  padding: 1%;
+  border-radius: 3px;
+  width: 30%;
+  display: inline-block;
+  margin: 0 2px 2px;
+}
+.inviteResult{
+  margin-bottom: 5px;
 }

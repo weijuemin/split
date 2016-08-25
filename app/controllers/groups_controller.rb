@@ -16,6 +16,10 @@ class GroupsController < ApplicationController
     render :json => @result
   end
 
+  def membership_create
+    render :json => params
+  end
+
   def create
     group = Group.create(name: params[:gname])
     if group.valid?
