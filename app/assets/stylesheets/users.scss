@@ -24,6 +24,13 @@ img {
 }
 
 #containerSettle {
+	text-align: center;
 	width: 350px;
 	margin: 0 auto;
+}
+
+#owes_list {
+	text-align: left;
+	list-style-type: disc;
+	margin: 0px 0px 20px 30px;
 }

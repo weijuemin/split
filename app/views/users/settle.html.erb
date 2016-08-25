@@ -2,15 +2,15 @@
 	<div id="containerSettle">
 		<h1>Settlement Page</h1>
 		<p><%= @user.first_name %> <%= @user.last_name %> owes <%= @owed_user.first_name %> <%= @owed_user.last_name %> $<%= '%.2f' % @total %></p>
-		<ul>
+		<ul id="owes_list">
 		<% @owes_list.each do |list| %>
 			<li>$<%= '%.2f' % list[:amt] %> for <%= list[:expense].name %> in <%= list[:expense].group.name %> group</li>
 		<% end %>
 		</ul>
 		<form action="/users/settle/<%= @owed_user.id %>" method="post">
-			<input type="hidden" name="authenticity_tokekn" value="<%= form_authenticity_token %>">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<input type="hidden" name="_method" value="patch">
-			<input type="submit" value="Make Full Payment or Get Pounded!">
+			<input type="submit" value="Make Full Payment or Get Pounded!" class="btn btn-success" id="settle_btn">
 		</form>
 	</div>
 </div>
