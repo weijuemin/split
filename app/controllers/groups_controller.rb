@@ -12,12 +12,17 @@ class GroupsController < ApplicationController
 
   def getUsers
     input = params[:input]
-    @result = User.where("first_name LIKE ? or last_name LIKE ?", "%#{input}%", "%#{input}%")
+    @result = User.where.not(id: current_user.id).where("first_name LIKE ? or last_name LIKE ?", "%#{input}%", "%#{input}%")
     render :json => @result
   end
 
   def membership_create
-    render :json => params
+    userIds = params[:getUIds].split(",").map {|i| i.to_i}
+    group = Group.find(params[:g_id])
+    userIds.each do |id|
+      UserGroup.create(user: User.find(id), group: group)
+    end
+    redirect_to "/groups/#{group.id}"
   end
 
   def create

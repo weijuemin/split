@@ -3,7 +3,6 @@
   <head>
     <title>Split</title>
     <%= csrf_meta_tags %>
-
     <%= javascript_include_tag 'jquery', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'jqueryui', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'bootstrap', 'data-turbolinks-track': 'reload' %>
@@ -11,7 +10,7 @@
     <%= stylesheet_link_tag    'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'jqueryui', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-no-turbolink'=> true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
   </head>
 
@@ -33,8 +32,8 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/users/">My profile</a></li>
-          <li><a href="/groups">My groups</a></li>
+          <li><a href="/users/">My profile</a><%#= link_to "My profile", "/users/", data: { no_turbolink: true } %></li>
+          <li><a href="/groups">My groups</a><%#= link_to "My groups", "/groups", data: { no_turbolink: true } %></li>
         </ul>
         
         <ul class="nav navbar-nav navbar-right">
