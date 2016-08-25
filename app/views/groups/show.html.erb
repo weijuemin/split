@@ -33,7 +33,7 @@
 		<button class="btn btn-success btn-sm newmember" data-groupId="<%= @group.id %>">Invite</button>
 
 		<h3>List of Expenses</h3>
-		<% if @group.expenses %>
+		<% if @group.expenses.count > 0 %>
 			<ul>
 				<% @group.expenses.each do |expense| %>
 					<li><a href="/expenses/<%= expense.id %>"><%= expense.name %></a></li>

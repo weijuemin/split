@@ -25,3 +25,8 @@ ul {
 	text-align: center;
 	list-style-type: none;
 }
+
+.navLogo {
+  display: block;
+  height: 100%;
+}
