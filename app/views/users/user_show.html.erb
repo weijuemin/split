@@ -8,6 +8,27 @@
 			<h3><b>Email: </b> <%=@user.email %></h3>
 		</div>
 		<div id="container">
+			<button type="button" class="btn btn-default btn-block" id="owes_button">List of people I owe</button>
+			<div id="owes">
+			<% if @owes %>
+				<ul>	
+				<% @owes.keys.each do |key| %>
+					<li><%= @user.first_name %> <%= @user.last_name %> owes <%= key.first_name %> <%= key.last_name %> $<%= '%.2f' % @owes[key] %></li>
+					<a href="/users/settle/<%= key.id %>">Transaction</a>
+				<% end %>
+				</ul>
+			<% end %>
+			</div>
+			<button type="button" class="btn btn-default btn-block" id="owed_button">List of people owes me</button>
+			<div id="owed">
+			<% if @owed %>
+				<ul>	
+				<% @owed.keys.each do |key| %>
+					<li><%= key.first_name %> <%= key.last_name %> owes <%= @user.first_name %> <%= @user.last_name %> $<%= '%.2f' % @owed[key] %></li>
+				<% end %>
+				</ul>
+			<% end %>
+			</div>
 		</div>
 		<div id="messages">
 			<% if flash[:message] %>

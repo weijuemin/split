@@ -15,6 +15,26 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    expenses = @user.expenses.where(completed:false)
+    @owes, @owed = {}, {}
+    expenses.each do |e|
+      result = outstanding(e)
+      result.each do |r|
+        if r[:owes] == @user
+          if @owes.has_key? r[:owed]
+            @owes[r[:owed]] += r[:amt]
+          else
+            @owes[r[:owed]] = r[:amt]
+          end
+        elsif r[:owed] == @user
+          if @owed.has_key? r[:owes]
+            @owed[r[:owes]] += r[:amt]
+          else
+            @owed[r[:owes]] = r[:amt]
+          end
+        end
+      end
+    end
     render 'users/user_show.html'
   end
 
@@ -33,4 +53,37 @@ class UsersController < ApplicationController
       redirect_to action: :edit
     end
   end
+
+  def settle
+    @user = current_user
+    expenses = @user.expenses.where(completed:false)
+    @owed_user = User.find(params[:id])
+    @owes_list = []
+    @total = 0
+    expenses.each do |e|
+      result = outstanding(e)
+      result.each do |r|
+        if r[:owes] == @user && r[:owed] == @owed_user
+          @total += r[:amt]
+          r[:expense] = e
+          @owes_list << r
+        end
+      end
+    end
+  end
+
+  def clear
+    user = current_user
+    expenses = user.expenses.where(completed:false)
+    expenses.each do |e|
+      result = outstanding(e)
+      result.each do |r|
+        if r[:owes] == user && r[:owed] == User.find(params[:id])
+          r1 = Record.find_by(user:user, expense:e)
+        end
+      end
+    end
+    redirect_to "/users"
+  end
+
 end
