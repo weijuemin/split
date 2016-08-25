@@ -1,7 +1,8 @@
+
+
 <div class="main">
 	<div id="containerShowUser">
 		<div id="header">
-			<a href="/users/edit">Edit Your Profile</a>
 			<%= image_tag "#{@user.profilepic}", class: "userpic" %>
 			<h2><b>Name: </b> <%=@user.first_name %> <%=@user.last_name %></h2>
 			<h3><b>Username: </b> <%=@user.username %></h3>
@@ -10,24 +11,28 @@
 		<div id="container">
 			<button type="button" class="btn btn-default btn-block" id="owes_button">List of people I owe</button>
 			<div id="owes">
-			<% if @owes %>
+			<% if @owes.count > 0 %>
 				<ul>	
 				<% @owes.keys.each do |key| %>
 					<li><%= @user.first_name %> <%= @user.last_name %> owes <%= key.first_name %> <%= key.last_name %> $<%= '%.2f' % @owes[key] %></li>
 					<a href="/users/settle/<%= key.id %>">Transaction</a>
 				<% end %>
 				</ul>
-			<% end %>
+			<% else %>
+				<p>You don't owe anyone. Yay!</p>
+			<% end -%>
 			</div>
 			<button type="button" class="btn btn-default btn-block" id="owed_button">List of people owes me</button>
 			<div id="owed">
-			<% if @owed %>
+			<% if @owed.count > 0 %>
 				<ul>	
 				<% @owed.keys.each do |key| %>
 					<li><%= key.first_name %> <%= key.last_name %> owes <%= @user.first_name %> <%= @user.last_name %> $<%= '%.2f' % @owed[key] %></li>
 				<% end %>
 				</ul>
-			<% end %>
+			<% else %>
+				<p>No one yet.</p>
+			<% end -%>
 			</div>
 		</div>
 		<div id="messages">
@@ -37,6 +42,6 @@
 				<% end %>
 			<% end %>
 		</div>
-		<button class="btn btn-info btn-sm">Add expense with group</button>
+		<button class="btn btn-info btn-sm activity">Add expense with group</button>
 	</div>
 </div>

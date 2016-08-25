@@ -15,6 +15,15 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    groupIds = []
+    x = @user.user_groups
+    if x.count > 0
+      x.each do |ug|
+        groupIds << ug.id
+      end
+    end
+    @groups = Group.where("id IN (#{groupIds.join(',')})")
+    
     expenses = @user.expenses.where(completed:false)
     @owes, @owed = {}, {}
     expenses.each do |e|

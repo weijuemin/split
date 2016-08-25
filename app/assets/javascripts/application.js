@@ -23,6 +23,7 @@ $(document).on('turbolinks:load', function(){
   	$('#owed').fadeToggle();
   })
 
+  // Add group modal
   var modal = $('.modalWrap, .modal');
   modal.hide();
   $('.newgroup').on('click', function(){
@@ -31,7 +32,7 @@ $(document).on('turbolinks:load', function(){
   $('.modalWrap').on('click', function(){
     modal.fadeOut('fast');
   })
-
+  // Add member to a group modal, and logic to add members
   var modal1 = $('.modalWrap1, .modal1');
   modal1.hide();
   $('.newmember').on('click', function(){
@@ -86,4 +87,7 @@ $(document).on('turbolinks:load', function(){
     $('input[name="getUIds"]').attr('value', userIds);
     return true;
   })
+
+  // 'Add expense with a group' btn on "/users" page
+  
 })
