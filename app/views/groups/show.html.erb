@@ -40,7 +40,11 @@
 				<% end %>
 			</ul>
 		<% end %>
-		<a href="/expenses/<%= @group.id %>/new">New Expense</a>
+		<form action="/expenses/<%= @group.id %>/new" method="GET">
+			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+			
+			<button class="btn btn-success btn-sm" value="new Expense">New Expense</button>
+		</form>
 	</div>
 </div>
   
