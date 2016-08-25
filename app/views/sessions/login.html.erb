@@ -1,7 +1,9 @@
 <div id="main">
 	<div id="containerLogin">
 		<div>
-			<a href="/">Not registered?</a>
+			<div id="header">
+				<a href="/sessions/new">Not registered?</a>
+			</div>
 			<h3>Splitter Login</h3>
 			<form action="/sessions/login" method="POST">
 				<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">		

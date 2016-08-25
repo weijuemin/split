@@ -2,12 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#containerGrp {	
+#containerGrp {
+  text-align: center;	
 	width: 425px;
 	margin: 0 auto;	
 }
 h3, h2 {
-  text-align: center
+  text-align: center;
 }
 @mixin modal {
   position: fixed;
