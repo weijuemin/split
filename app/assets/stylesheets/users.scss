@@ -14,3 +14,16 @@ img {
 	margin: 0 auto;
   width: 80%;
 }
+
+#owes, #owed {
+	display: none;
+}
+
+#owes_button, #owed_button {
+	display: block;
+}
+
+#containerSettle {
+	width: 350px;
+	margin: 0 auto;
+}

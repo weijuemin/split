@@ -16,6 +16,12 @@ $(document).on('turbolinks:load', function(){
 			$('#amount_block').fadeOut();
 		}
 	})
+  $('#owes_button').click(function() {
+  	$('#owes').fadeToggle();
+  })
+  $('#owed_button').click(function() {
+  	$('#owed').fadeToggle();
+  })
 
   var modal = $('.modalWrap, .modal');
   modal.hide();

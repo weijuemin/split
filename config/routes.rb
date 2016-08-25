@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/users/edit' => 'users#edit'
   patch "/users/" => "users#update"
   get '/users/logout' => 'sessions#reset'
+  get '/users/settle/:id' => 'users#settle'
+  patch '/users/settle/:id' => 'users#clear'
 
   get '/groups' => 'groups#display'
   get '/groups/:group_id' => 'groups#show'

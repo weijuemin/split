@@ -24,7 +24,7 @@ class ExpensesController < ApplicationController
 			group.users.each do |user|
 				total += params["u#{ user.id }ca"].to_i
 			end
-			if total != params[:amount]
+			if total != params[:amount].to_i
 				flash[:errors] = ["Custom Amounts must add up to $#{ params[:amount] }!"]
 				redirect_to "/expenses/#{ params[:group_id] }/new"
 				return
@@ -56,41 +56,5 @@ class ExpensesController < ApplicationController
 	    @exp = Expense.find(params[:expense_id])
 	    @record = Record.where(expense:@exp)
 	    outstanding(@exp)
-	end
-
-	private
-	def outstanding exp
-	    allrecord = Record.where(expense: exp)
-	    owes, owed = [], []
-
-	    allrecord.each do |r|
-	      if r.diff < 0
-	        owes << {:user => r.user, :diff => r.diff}
-	      elsif r.diff > 0
-	        owed << {:user => r.user, :diff => r.diff}
-	      end
-	    end
-
-	    @output = []
-
-	    while 0!=owed.length && 0!=owes.length
-	      if owed[0][:diff] < owes[0][:diff].abs
-	        amt = owed[0][:diff]
-	        @output << {:owes =>owes[0][:user], :owed =>owed[0][:user], :amt => amt}
-	        owes[0][:diff] += owed[0][:diff]
-	        owed.shift
-	      elsif owed[0][:diff] > owes[0][:diff].abs
-	        amt = owes[0][:diff].abs
-	        @output << {:owes =>owes[0][:user], :owed =>owed[0][:user], :amt => amt}
-	        owed[0][:diff] += owes[0][:diff]
-	        owes.shift
-	      else
-	        amt = owed[0][:diff]
-	        @output << {:owes =>owes[0][:user], :owed =>owed[0][:user], :amt => amt}
-	        owed.shift
-	        owes.shift
-	      end
-	    end
-	    @output
 	end
 end
