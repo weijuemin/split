@@ -74,13 +74,31 @@ class UsersController < ApplicationController
 
   def clear
     user = current_user
+    owed_user = User.find(params[:id])
     expenses = user.expenses.where(completed:false)
     expenses.each do |e|
       result = outstanding(e)
       result.each do |r|
-        if r[:owes] == user && r[:owed] == User.find(params[:id])
+        if r[:owes] == user && r[:owed] == owed_user
           r1 = Record.find_by(user:user, expense:e)
+          r2 = Record.find_by(user:owed_user, expense:e)
+          diff = r1[:diff] + r[:amt]
+          diff = 0 if diff.abs < 0.01
+          r1.update(paid:r1[:paid] + r[:amt], diff:diff)
+          diff = r2[:diff] - r[:amt]
+          diff = 0 if diff.abs < 0.01
+          r2.update(paid:r2[:paid] - r[:amt], diff:diff)
         end
+      end
+      completed = true
+      e.records.each do |record|
+        if record.diff != 0
+          completed = false
+          break
+        end
+      end
+      if completed
+        e.update(completed:true)
       end
     end
     redirect_to "/users"
