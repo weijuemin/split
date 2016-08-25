@@ -37,9 +37,12 @@ $(document).on('turbolinks:load', function(){
     modal1.fadeOut('fast');
   })
   $('#invite').on('keyup', function(){
+    var path = window.location.pathname;
+    var g_id = parseInt(path.substr(path.lastIndexOf('/') + 1));
     var searchVal = $(this).val();
     var html = "";
-    $.ajax("/getusers?input="+searchVal).then(function(res){
+    $.ajax("/getusers?group="+g_id+"&input="+searchVal).then(function(res){
+      console.log(res);
       if (res.length > 0){
         html += "<table class='showUsers table'>";
         for (var i=0; i<res.length; i++){

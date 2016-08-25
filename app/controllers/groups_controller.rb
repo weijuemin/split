@@ -11,8 +11,18 @@ class GroupsController < ApplicationController
 	end
 
   def getUsers
+    g_id = params[:group]
     input = params[:input]
-    @result = User.where.not(id: current_user.id).where("first_name LIKE ? or last_name LIKE ?", "%#{input}%", "%#{input}%")
+    if input != ""
+      group = Group.find(g_id)
+      existingUIds = [];
+      UserGroup.where.not(group: group).each do |ug|
+        existingUIds << ug.user.id
+      end
+      @result = User.where("id IN (#{existingUIds.join(',')})").where("first_name || ' ' || last_name LIKE ?", "%#{input}%").where.not(id: current_user.id)
+    else
+      @result = [];
+    end
     render :json => @result
   end
 
