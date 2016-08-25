@@ -26,7 +26,7 @@
 		<% else %>
 		<ul class="showMember">
 			<% @members.each do |m| %>
-			<li><%= m.first.user.first_name %> <%= m.first.user.last_name %></li>
+			<li><%= m.user.first_name %> <%= m.user.last_name %></li>
 			<% end -%>
 		</ul>
 		<% end -%>
