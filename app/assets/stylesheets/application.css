@@ -25,3 +25,7 @@ ul {
 	margin: 0 auto;
 }
 
+.navLogo {
+  display: block;
+  height: 100%;
+}

@@ -22,13 +22,15 @@
 					<input class="form-control" type="text" name="u<%= user.id %>" id="u<%= user.id %>">
 				</div>
 			<% end %>
-			<label for="split">Split Option:</label>
-			<select name="split">
-				<option selected disabled>Select Option</option>
-				<option value="equal">Equally</option>
-				<option value="percent" id="percent">By Percentage</option>
-				<option value="custom" id="custom">By Custom Amount</option>
-			</select>
+			<div class="form-group">
+				<label for="split">Split Option:</label>
+				<select name="split">
+					<option selected disabled>Select Option</option>
+					<option value="equal">Equally</option>
+					<option value="percent" id="percent">By Percentage</option>
+					<option value="custom" id="custom">By Custom Amount</option>
+				</select>
+			</div>
 			<div id="percent_block">
 			<% @group.users.each do |user| %>
 				<div class="form-group">
