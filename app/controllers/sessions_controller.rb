@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
   def reset
     if logged_in
     	session.destroy
-    	redirect_to "/sessions/"
+    	redirect_to "/"
     end
   end
 end

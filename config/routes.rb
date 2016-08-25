@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post "/groups" => "groups#create"
   patch "/groups" => "groups#addmember"
   get "/getusers" => "groups#getUsers"
-  post "/groups/:g_id/members" => "groups#membership_create"
+  patch "/groups/:g_id/members" => "groups#membership_create"
 
   get '/expenses/:expense_id' => 'expenses#show'
   get '/expenses/:group_id/new' => 'expenses#new'
