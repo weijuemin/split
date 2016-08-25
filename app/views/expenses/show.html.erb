@@ -1,12 +1,29 @@
 <div id="main">
 	<div id="containerExp">
 		<a href="/groups/<%= @exp.group.id %>">Back</a>
-		<p><%= @exp.name %>: $<%= @exp.amount %></p>
-		<% @record.each do |r| %>
-			<p><%= r.user.first_name %> <%= r.user.last_name %> paid <%= r.paid %></p>
-		<% end %>
+		<p><%= @exp.name %>: $<%= '%.2f' % @exp.amount %></p>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Paid Amount</th>
+					<th>Splitted Amount</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @record.each do |r| %>
+				<tr>
+					<th>
+						<p><%= r.user.first_name %> <%= r.user.last_name %></p>
+					</th>
+					<th>$<%= '%.2f' % r.paid %></th>
+					<th>$<%= '%.2f' % r.amount%></th>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
 		<% @output.each do |o| %>
-			<p><%= o[:owes].first_name %> <%= o[:owes].last_name %> owes <%= o[:owed].first_name %> <%= o[:owed].last_name %> $<%= o[:amt] %></p>
+			<p><%= o[:owes].first_name %> <%= o[:owes].last_name %> owes <%= o[:owed].first_name %> <%= o[:owed].last_name %> $<%= '%.2f' % o[:amt] %></p>
 		<% end %>
 	</div>
 </div>

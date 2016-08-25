@@ -16,4 +16,16 @@
 //= require_tree .
 $(document).on('turbolinks:load', function(){
   $('.dropdown-toggle').dropdown();
+  $('select[name="split"]').on('change', function(){
+		if($('#percent').is(":selected")) {
+			$('#amount_block').hide();
+			$('#percent_block').fadeIn();
+		} else if ($('#custom').is(":selected")) {
+			$('#percent_block').hide();
+			$('#amount_block').fadeIn();
+		} else {
+			$('#percent_block').fadeOut();
+			$('#amount_block').fadeOut();
+		}
+	})
 })
