@@ -1,0 +1,58 @@
+<div class="main">
+	<div id="containerRegister">
+		<div id="header">
+			<a href="/sessions/">Already Registered?</a>
+		</div>
+		<div>
+			<h3>New Splitter Registration</h3>
+			<form action="/users/create" method="POST" enctype="multipart/form-data">
+				<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+				
+				<div class="form-group">
+					<label for="first_name" value="First Name">First Name:</label>
+					<input class="form-control" name="first_name" placeholder="first name" type="text">
+				</div>
+				
+				<div class="form-group">
+					<label for="last_name" value="Last Name">Last Name:</label>
+					<input class="form-control" name="last_name" placeholder="last name" type="text">
+				</div>
+
+				<div class="form-group">
+					<label for="username" value="Last Name">User Name:</label>
+					<input class="form-control" name="username" placeholder="user name" type="text">
+				</div>
+
+				<div class="form-group">
+					<label for="email" value="Email Address">Email Address:</label>
+					<input class="form-control" name="email" placeholder="email address" type="text">
+				</div>
+
+				<div class="form-group">
+					<label for="profilepic" value="Profile picture">Profile picture:</label>
+					<input name="profilepic" placeholder="profilepic" type="file">
+				</div>
+				
+				<div class="form-group">
+					<label for="password" value="Password">Password:</label>
+					<input class="form-control" name="password" placeholder="password" type="password">
+				</div>
+				
+				<div class="form-group">
+					<label for="password_confirmation" value="Password">Confirm Password:</label>
+					<input class="form-control" name="password_confirmation" placeholder="password confirmation" type="password">
+				</div>
+				
+				<button type="submit" class="btn btn-default" value="register">Register</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="messages">
+	<% if flash[:message] %>
+		<% flash[:message].each do |message| %>
+			<%=message %><br>
+		<% end %>
+	<% end %>
+</div>

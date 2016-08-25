@@ -1,7 +1,20 @@
+<div class="modalWrap"></div>
+<div class="row">
+  <div class="modal col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1">
+    <form action="/groups" method="post">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <div class="form-group">
+        <label for="gname">Enter the group name</label>
+        <input type="text" class="form-control" id="gname" placeholder="123 Sesame Street" name="gname">
+      </div>
+      <input type="submit" class="btn btn-info btn-sm" value="Save">
+    </form>
+  </div>
+</div>
+
 <div id="main">
 	<div id="containerGrp">
 		<h1 style="text-align: center;"><%= @user.first_name %>'s List of Groups</h1>
-		<a href="/users">Back</a>
 		<% if @groups %>
 			<ul>
 				<% @groups.each do |group| %>
@@ -9,5 +22,7 @@
 				<% end %>
 			</ul>
 		<% end %>
+
+		<button class="btn btn-primary btn-sm newgroup">Start a new group</button>
 	</div>
 </div>

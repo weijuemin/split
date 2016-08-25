@@ -3,10 +3,9 @@
 		<h1>New Expense</h1>
 		<% if flash[:errors] %>
 			<% flash[:errors].each do |error| %>
-				<p><%= error %></p>
+				<p style="text-align: center;"><%= error %></p>
 			<% end %>
 		<% end %>
-		<a href="/groups/<%= @group.id %>">Back</a>
 		<form action="/expenses/<%= @group.id %>" method="post">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<div class="form-group">

@@ -6,6 +6,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def registerPage
+    render 'register.html'
+  end
+
   def loginPage
     if logged_in
       redirect_to "/users"
