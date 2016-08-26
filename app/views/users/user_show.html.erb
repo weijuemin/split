@@ -24,8 +24,10 @@
 				<% if @owes.count > 0 %>
 					<ul class="dropdown-debt">	
 					<% @owes.keys.each do |key| %>
-						<li><%= @user.first_name %> <%= @user.last_name %> owes <%= key.first_name %> <%= key.last_name %> $<%= '%.2f' % @owes[key] %></li>
+						<li>
+						<%= @user.first_name %> <%= @user.last_name %> owes <%= key.first_name %> <%= key.last_name %> $<%= '%.2f' % @owes[key] %>	
 						<a href="/users/settle/<%= key.id %>">Transaction</a>
+						</li>
 					<% end %>
 					</ul>
 				<% else %>
