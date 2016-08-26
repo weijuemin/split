@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
       UserGroup.where(group: group).each do |ug|
         existingUIds << ug.user.id
       end
-      @result = User.where("id IN NOT (#{existingUIds.join(',')})").where("first_name || ' ' || last_name LIKE ?", "%#{input}%").where.not(id: current_user.id)
+      @result = User.where("id NOT IN (#{existingUIds.join(',')})").where("first_name || ' ' || last_name LIKE ?", "%#{input}%").where.not(id: current_user.id)
     else
       @result = [];
     end
