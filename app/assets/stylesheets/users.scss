@@ -54,8 +54,27 @@
 }
 #containerSettle {
 	text-align: center;
-	width: 350px;
 	margin: 0 auto;
+	h1 {
+		color: #0F50A0;
+		font-weight: bold;
+	}
+	ul {
+		text-align: center;
+		list-style: inside;
+	}
+	.settlement {
+		background-color: rgba(200,200,200,.5);
+		border-radius: 4px;
+		padding: 2%;
+		.debtRecord {
+			padding-bottom: 1%;
+			border-bottom: 1px solid black;
+		}
+		#owes_list li {
+			color: rgb(90,90,90);
+		}
+	}
 }
 
 #owes_list {

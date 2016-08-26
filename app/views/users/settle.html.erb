@@ -1,16 +1,25 @@
+<div class="logo">
+  <%= image_tag "logo" %>
+</div>
+
 <div class="main">
-	<div id="containerSettle">
-		<h1>Settlement Page</h1>
-		<p><%= @user.first_name %> <%= @user.last_name %> owes <%= @owed_user.first_name %> <%= @owed_user.last_name %> $<%= '%.2f' % @total %></p>
-		<ul id="owes_list">
-		<% @owes_list.each do |list| %>
-			<li>$<%= '%.2f' % list[:amt] %> for <%= list[:expense].name %> in <%= list[:expense].group.name %> group</li>
-		<% end %>
-		</ul>
-		<form action="/users/settle/<%= @owed_user.id %>" method="post">
-			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<input type="hidden" name="_method" value="patch">
-			<input type="submit" value="Make Full Payment or Get Pounded!" class="btn btn-success" id="settle_btn">
-		</form>
+	<div id="containerSettle" class="row">
+		<h1>Settlement</h1>
+		<div class="col-lg-6 col-md-6 col-sm-8 col-xs-10 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+			<div class="settlement">
+				<p class="debtRecord"><b><%= @user.first_name %> <%= @user.last_name %></b> owes <b><%= @owed_user.first_name %> <%= @owed_user.last_name %></b> $<%= '%.2f' % @total %></p>
+				<ul id="owes_list">
+				<% @owes_list.each do |list| %>
+					<li>$<%= '%.2f' % list[:amt] %> for <%= list[:expense].name %> in <%= list[:expense].group.name %> group</li>
+				<% end %>
+				</ul>
+			</div>
+			<br>
+			<form action="/users/settle/<%= @owed_user.id %>" method="post">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="hidden" name="_method" value="patch">
+				<input type="submit" value="Make Full Payment or Get Pounded!" class="btn btn-success" id="settle_btn">
+			</form>
+		</div>
 	</div>
 </div>
