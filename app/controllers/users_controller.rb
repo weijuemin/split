@@ -82,12 +82,20 @@ class UsersController < ApplicationController
         if r[:owes] == user && r[:owed] == owed_user
           r1 = Record.find_by(user:user, expense:e)
           r2 = Record.find_by(user:owed_user, expense:e)
+          paid = r1[:paid] + r[:amt]
           diff = r1[:diff] + r[:amt]
-          diff = 0 if diff.abs < 0.01
-          r1.update(paid:r1[:paid] + r[:amt], diff:diff)
+          if diff.abs < 0.01
+            paid = r1[:amount]
+            diff = 0
+          end
+          r1.update(paid:paid, diff:diff)
+          paid = r2[:paid] - r[:amt]
           diff = r2[:diff] - r[:amt]
-          diff = 0 if diff.abs < 0.01
-          r2.update(paid:r2[:paid] - r[:amt], diff:diff)
+          if diff.abs < 0.01
+            paid = r2[:amount]
+            diff = 0
+          end
+          r2.update(paid:paid, diff:diff)
         end
       end
       completed = true
