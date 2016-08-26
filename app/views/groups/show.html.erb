@@ -10,7 +10,7 @@
 	    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <div class="form-group">
         <label for="invite">$plitters you want to add into this group:</label>
-        <input type="text" class="form-control" id="invite" placeholder="Enter name or email">
+        <input type="text" class="form-control" id="invite" placeholder="Enter name">
       </div>
       <div class="inviteWrap"></div>
       <div class="inviteResult"></div>
@@ -20,37 +20,37 @@
 </div>
 
 <div class="main">
-	<div class="containerGrp">
-		<h2><%= @group.name %></h2>
-		<h4>Created by: <%= @members.first.user.first_name %> <%= @members.first.user.last_name %></h4>
-		
-		<h4>Members:</h4>
-		<% if @members.count == 1 and @members.first.user == @current_user %>
-			<p>You're the only member in the group!</p>
-		<% else %>
-		<ul class="showMember">
-			<% @members.each do |m| %>
-			<li><%= m.user.first_name %> <%= m.user.last_name %></li>
-			<% end -%>
-		</ul>
-		<% end -%>
-		<button class="btn btn-success btn-sm newmember" data-groupId="<%= @group.id %>">Invite</button>
+	<div class="containerGrp row groupInfo">
+  <h2 class="groupSum">Group: <%= @group.name %></h2>
+  <h4>Created by: <%= @members.first.user.first_name %> <%= @members.first.user.last_name %></h4>
+  <div class="hr"></div>
+    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">  		
+  		<h2>Members:</h2>
+  		<% if @members.count == 1 and @members.first.user == @current_user %>
+  			<p class="memberinfo">You're the only member in the group!</p>
+  		<% else %>
+  		<ul class="showMember">
+  			<% @members.each do |m| %>
+  			<li class="memberinfo"><%= m.user.first_name %> <%= m.user.last_name %></li>
+  			<% end -%>
+  		</ul>
+  		<% end -%>
+  		<button class="btn btn-success btn-sm newmember" data-groupId="<%= @group.id %>">Invite</button>
+    </div>
 
-		<h3>List of Expenses</h3>
-		<% if @group.expenses.count > 0 %>
-			<ul>
-				<% @group.expenses.each do |expense| %>
-					<li><a href="/expenses/<%= expense.id %>"><%= expense.name %></a></li>
-				<% end %>
-			</ul>
-		<% else %>
-			<p>No expenses in this group.</p>
-		<% end %>
-		<form action="/expenses/<%= @group.id %>/new" method="GET">
-			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
-			
-			<button class="btn btn-success btn-sm" value="new Expense">New Expense</button>
-		</form>
+    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-1 col-xs-offset-1">
+  		<h3>List of Expenses</h3>
+  		<% if @group.expenses.count > 0 %>
+  			<ul>
+  				<% @group.expenses.each do |expense| %>
+  					<li class="memberinfo"><a href="/expenses/<%= expense.id %>"><%= expense.name %></a></li>
+  				<% end %>
+  			</ul>
+  		<% else %>
+  			<p>No expenses in this group.</p>
+  		<% end %>
+      <a href="/expenses/<%= @group.id %>/new" class="btn btn-info btn-sm newexpense">New Expense</a>
+    </div>
 	</div>
 </div>
   

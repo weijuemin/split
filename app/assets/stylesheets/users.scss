@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .showUserPage {
 	margin-top: 5%;
+	.updateBtn {
+		display: block;
+		margin: 0 auto;
+	}
 }
 .containerShowUser {
 	margin: 0 auto;

@@ -1,7 +1,7 @@
 <div id="main" class="showUserPage">
-	<div class="containerShowUser row">
+	<div class="row">
 		<h2>Edit your profile:</h2>
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-2"><br>
+		<div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-offset-2"><br>
 			<form action="/users/" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 				<input name="_method" type="hidden" value="PATCH"/>
@@ -31,7 +31,7 @@
 					<input name="profilepic" type="file" id="updateUser">
 				</div>
 				
-				<button type="submit" class="btn btn-default" value="Update">Update</button>
+				<button type="submit" class="btn btn-info updateBtn" value="Update">Update</button>
 			</form>
 		</div>
 		<div>

@@ -3,15 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .containerGrp {
+  width: 55%;
   text-align: center;	
-	width: 425px;
 	margin: 0 auto;
   table tr th {
     text-align: center;
   }
 }
+.groupInfo {
+  width: 60%;
+  .memberinfo {
+    padding: 2px 0;
+  }
+}
 h3, h2 {
   text-align: center;
+}
+.groupSum {
+  color: #062040;
+  font-weight: bold;
 }
 @mixin modalStyle {
   position: fixed;
@@ -24,6 +34,12 @@ h3, h2 {
   label {
     color: #fff;
   }
+}
+.hr {
+  border-bottom: 2px dotted rgb(60,80,90);
+}
+.newmember, .newexpense {
+  margin-top: 3%;
 }
 .modalWrap, .modalWrap1 {
   position: fixed;
