@@ -63,3 +63,10 @@ ul {
 .contentImg {
   width: 100%;
 }
+
+.credits {
+  display: block;
+  position: relative;
+  bottom: 5px;
+  left: 37%;
+}
