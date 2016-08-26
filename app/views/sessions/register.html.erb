@@ -1,11 +1,16 @@
-<div class="main">
-	<div id="containerRegister">
-		<div id="header">
-			<a href="/sessions/" style="text-align: center;">Already Registered?</a>
-		</div>
-		<div>
+<div class="mainbg">
+	<%= image_tag "mainbg.jpg", class: "bg" %>
+</div>
+
+<div class="logo">
+  <%= image_tag "logo.png" %>
+</div>
+<div class="container-fluid content">
+	<div id="row">
+		<div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-1">
+			<a href="/sessions/">Already Registered?</a>
 			<h3>New Splitter Registration</h3>
-			<form action="/users/create" method="POST" enctype="multipart/form-data">
+			<form action="/users/create" method="POST" enctype="multipart/form-data" class="lr">
 				<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
 				
 				<div class="form-group">
@@ -43,7 +48,7 @@
 					<input class="form-control" name="password_confirmation" placeholder="password confirmation" type="password">
 				</div>
 				
-				<button type="submit" class="btn btn-default" value="register">Register</button>
+				<button type="submit" class="btn btn-primary" value="register">Register</button>
 			</form>
 		</div>
 	</div>

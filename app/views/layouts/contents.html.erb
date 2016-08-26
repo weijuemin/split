@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Split</title>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag %>
+    <%= javascript_include_tag 'jquery', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jqueryui', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag    'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'jqueryui', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-no-turbolink'=> true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
+  </head>
+
+  <body>
+  <div class="contentBg">
+    <%= image_tag "whitebg_wide", class: "contentImg" %>
+  </div>
+  <!-- <div class="logo">
+    <%#= image_tag "logo" %>
+  </div> -->
+  <% if session[:user_id] %>
+  <nav class="navbar navbar-default navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><%= image_tag "nav_logo.png", class: "navLogo" %></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/users/">My profile</a><%#= link_to "My profile", "/users/", data: { no_turbolink: true } %></li>
+          <li><a href="/groups">My groups</a><%#= link_to "My groups", "/groups", data: { no_turbolink: true } %></li>
+        </ul>
+        
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name %>'s Account <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/users/edit">Edit profile</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/users/logout">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <% end -%>
+
+  <% if flash[:error] %>
+  <div class="showErr">
+    <% flash[:error].each do |msg| %>
+    <p class="errMsg"><% msg %></p>
+    <% end -%>
+  </div>
+  <% end -%>
+    <%= yield %>
+  </body>
+</html>

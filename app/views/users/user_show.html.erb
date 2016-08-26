@@ -1,47 +1,53 @@
-
-
-<div class="main">
-	<div id="containerShowUser">
-		<div id="header">
-			<%= image_tag "#{@user.profilepic}", class: "userpic" %>
-			<h2><b>Name: </b> <%=@user.first_name %> <%=@user.last_name %></h2>
-			<h3><b>Username: </b> <%=@user.username %></h3>
-			<h3><b>Email: </b> <%=@user.email %></h3>
-		</div>
-		<div id="container">
-			<button type="button" class="btn btn-default btn-block" id="owes_button">List of people I owe</button>
-			<div id="owes">
-			<% if @owes.count > 0 %>
-				<ul>	
-				<% @owes.keys.each do |key| %>
-					<li><%= @user.first_name %> <%= @user.last_name %> owes <%= key.first_name %> <%= key.last_name %> $<%= '%.2f' % @owes[key] %></li>
-					<a href="/users/settle/<%= key.id %>">Transaction</a>
-				<% end %>
-				</ul>
-			<% else %>
-				<p>You don't owe anyone. Yay!</p>
-			<% end -%>
-			</div>
-			<button type="button" class="btn btn-default btn-block" id="owed_button">List of people owes me</button>
-			<div id="owed">
-			<% if @owed.count > 0 %>
-				<ul>	
-				<% @owed.keys.each do |key| %>
-					<li><%= key.first_name %> <%= key.last_name %> owes <%= @user.first_name %> <%= @user.last_name %> $<%= '%.2f' % @owed[key] %></li>
-				<% end %>
-				</ul>
-			<% else %>
-				<p>No one yet.</p>
-			<% end -%>
-			</div>
-		</div>
-		<div id="messages">
-			<% if flash[:message] %>
-				<% flash[:message].each do |message| %>
-					<%=message %><br>
-				<% end %>
+<div class="main showUserPage">
+	<div id="messages">
+		<% if flash[:message] %>
+			<% flash[:message].each do |message| %>
+				<p class="notice"><%=message %> <span>x</span></p>
 			<% end %>
+		<% end %>
+	</div>
+	<div class="containerShowUser">
+		<div class="row">
+			<div class="side col-lg-6 col-md-6 col-sm-6 col-xs-8 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-2">
+			<%= image_tag "#{@user.profilepic}", class: "userpic" %>
+			</div>
+			<div class="side col-lg-6 col-md-6 col-sm-6 col-xs-8 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-2">
+				<h3><b>Name: </b> <%=@user.first_name %> <%=@user.last_name %></h3>
+				<h3><b>Username: </b> <%=@user.username %></h3>
+				<h3><b>Email: </b> <%=@user.email %></h3>
+				</div>
 		</div>
-		<button class="btn btn-info btn-sm activity">Add expense with group</button>
+		<div id="container" class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-2">
+				<button type="button" class="btn btn-warning btn-block" id="owes_button">List of people I owe</button>
+				<div id="owes">
+				<% if @owes.count > 0 %>
+					<ul class="dropdown-debt">	
+					<% @owes.keys.each do |key| %>
+						<li><%= @user.first_name %> <%= @user.last_name %> owes <%= key.first_name %> <%= key.last_name %> $<%= '%.2f' % @owes[key] %></li>
+						<a href="/users/settle/<%= key.id %>">Transaction</a>
+					<% end %>
+					</ul>
+				<% else %>
+					<p class="msg">You don't owe anyone. Yay!</p>
+				<% end -%>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-2">
+				<button type="button" class="btn btn-info btn-block" id="owed_button">List of people that owe me</button>
+				<div id="owed">
+				<% if @owed.count > 0 %>
+					<ul class="dropdown-debt">	
+					<% @owed.keys.each do |key| %>
+						<li><%= key.first_name %> <%= key.last_name %> owes <%= @user.first_name %> <%= @user.last_name %> $<%= '%.2f' % @owed[key] %></li>
+					<% end %>
+					</ul>
+				<% else %>
+					<p class="msg">No one yet.</p>
+				<% end -%>
+				</div>
+			</div>
+		</div>
+		<!-- <button class="btn btn-info btn-sm activity">Add expense with group</button> -->
 	</div>
 </div>

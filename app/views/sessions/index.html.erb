@@ -1,20 +1,18 @@
+<div class="slideUp"></div>
+<div class="mainbg">
+<%= image_tag "mainbg.jpg", class: "bg" %>
+</div>
+
+<div class="logo">
+  <%= image_tag "logo.png" %>
+</div>
+
 <div class="main">
 	<div id="containerIndex">
 		<div id="header">
 			<h2>Welcome!</h2>
 		</div>
-		<div>
-			<form action="/sessions/new" method="GET" enctype="multipart/form-data">
-				<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
-				
-				<button type="submit" class="btn btn-default" value="register">Register</button>
-			</form>
-
-			<form action="/sessions/" method="GET" enctype="multipart/form-data">
-				<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
-				
-				<button type="submit" class="btn btn-default" value="login">Login</button>
-			</form>
-		</div>
+		<a href="/sessions/new" class="home btn btn-info">Register</a>
+		<a href="/sessions/" class="home btn btn-warning" value="login">Login</a>
 	</div>
 </div>

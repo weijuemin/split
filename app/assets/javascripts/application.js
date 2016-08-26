@@ -3,7 +3,13 @@
 //= require turbolinks
 //= require_tree .
 $(document).on('turbolinks:load', function(){
+  $('.slideUp').fadeOut(800).delay(300);
+
   $('.dropdown-toggle').dropdown();
+
+  $('.notice span').on('click', function(){
+    $(this).parent().parent().hide();
+  })
   $('select[name="split"]').on('change', function(){
 		if($('#percent').is(":selected")) {
 			$('#amount_block').hide();
@@ -17,10 +23,10 @@ $(document).on('turbolinks:load', function(){
 		}
 	})
   $('#owes_button').click(function() {
-  	$('#owes').fadeToggle();
+  	$('#owes').fadeToggle('fast');
   })
   $('#owed_button').click(function() {
-  	$('#owed').fadeToggle();
+  	$('#owed').fadeToggle('fast');
   })
 
   // Add group modal
