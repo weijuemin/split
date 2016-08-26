@@ -1,28 +1,49 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-img {
-	display: block;
+.showUserPage {
+	margin-top: 5%;
 }
-	#containerShowUser {
-		text-align: center;
-		width: 350px;
-		margin: 0 auto;
-	}
-
-.userpic {
+.containerShowUser {
 	margin: 0 auto;
-  width: 80%;
+	width: 70%;
 }
-
+#updateUser {
+	display: inline-block;
+}
+.side:nth-child(2) h3 {
+	text-align: left;
+}
+.userpic {
+	display: block;
+	margin: 0 auto;
+  width: 50%;
+}
+#container {
+	margin-top: 2%;
+}
 #owes, #owed {
 	display: none;
 }
 
 #owes_button, #owed_button {
 	display: block;
+	margin-top: 3px;
 }
-
+.dropdown-debt {
+	background-color: rgba(15,80,160,.7);
+	margin: 0 auto;
+	color: #fff;
+	padding-left: 0;
+	li {
+		padding: 5px 0;
+		border-bottom: 1px solid rgb(156,156,156);
+	}
+	li:last-child {
+		border-bottom: none;
+	}
+	border-radius: 0 0 4px 4px;
+}
 #containerSettle {
 	text-align: center;
 	width: 350px;
@@ -33,4 +54,10 @@ img {
 	text-align: left;
 	list-style-type: disc;
 	margin: 0px 0px 20px 30px;
+}
+.msg {
+	text-align: center;
+	color: green;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }

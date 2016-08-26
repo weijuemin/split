@@ -3,7 +3,13 @@
 //= require turbolinks
 //= require_tree .
 $(document).on('turbolinks:load', function(){
+  $('.slideUp').fadeOut(800).delay(300);
+
   $('.dropdown-toggle').dropdown();
+
+  $('.notice span').on('click', function(){
+    $(this).parent().parent().hide();
+  })
   $('select[name="split"]').on('change', function(){
 		if($('#percent').is(":selected")) {
 			$('#amount_block').hide();
@@ -17,12 +23,13 @@ $(document).on('turbolinks:load', function(){
 		}
 	})
   $('#owes_button').click(function() {
-  	$('#owes').fadeToggle();
+  	$('#owes').fadeToggle('fast');
   })
   $('#owed_button').click(function() {
-  	$('#owed').fadeToggle();
+  	$('#owed').fadeToggle('fast');
   })
 
+  // Add group modal
   var modal = $('.modalWrap, .modal');
   modal.hide();
   $('.newgroup').on('click', function(){
@@ -31,7 +38,7 @@ $(document).on('turbolinks:load', function(){
   $('.modalWrap').on('click', function(){
     modal.fadeOut('fast');
   })
-
+  // Add member to a group modal, and logic to add members
   var modal1 = $('.modalWrap1, .modal1');
   modal1.hide();
   $('.newmember').on('click', function(){
@@ -86,4 +93,7 @@ $(document).on('turbolinks:load', function(){
     $('input[name="getUIds"]').attr('value', userIds);
     return true;
   })
+
+  // 'Add expense with a group' btn on "/users" page
+  
 })

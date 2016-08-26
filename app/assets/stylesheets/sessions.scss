@@ -1,39 +1,52 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+.slideUp {
+	background-color: rgb(60,65,94);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 21;
+}
 input {
 	display: block;
 }
-button {
+.home {
+	display: block;
+	margin: 0 auto;
+	margin-top: 1%;
+	width: 35%;
+}
+.content {
+	padding-top: 2%;
+	padding-bottom: 4%;
+	background-color: rgba(200,200,200,.5);
 	text-align: center;
+}
+input[type="file"] {
+	display: block;
+	margin: 10px auto;
+	padding-right: 0;
+}
+.lr input {
+	text-align: center;
+}
+#containerIndex {
+	text-align: center;
+	width: 300px;
+	margin: 0 auto;	
+}
+#containerRegister {
+	width: 500px;
 	margin: 0 auto;
-	margin-top: 15px;
 }
-
-#main {
-	width: 900px;
+#containerLogin {
+	width: 225px;
 	margin: 0 auto;
 }
-#header {
-	text-align:center;
+#messages {
+	font-weight: bold;
+	color: red;
+	text-align: center;
 }
-	#containerIndex {
-		text-align: center;
-		width: 300px;
-		margin: 0 auto;	
-	}
-	#containerRegister {
-		width: 500px;
-		margin: 0 auto;
-	}
-	#containerLogin {
-		width: 225px;
-		margin: 0 auto;
-	}
-	#messages {
-		font-weight: bold;
-		color: red;
-		text-align: center;
-	}
 

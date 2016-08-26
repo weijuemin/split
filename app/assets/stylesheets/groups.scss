@@ -2,15 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#containerGrp {
+.containerGrp {
   text-align: center;	
 	width: 425px;
-	margin: 0 auto;	
+	margin: 0 auto;
+  table tr th {
+    text-align: center;
+  }
 }
 h3, h2 {
   text-align: center;
 }
-@mixin modal {
+@mixin modalStyle {
   position: fixed;
   top: 25%;
   padding: 2% 1%;
@@ -31,11 +34,11 @@ h3, h2 {
   background-color: rgba(80,80,80,.9);
   z-index: 10;
 }
-.modal1, .modal {
-  @include modal;
+.modal, .modal1 {
+  @include modalStyle;
 }
 .modal {
-  height: 40%;
+  height: 30%;
 }
 .showUsers {
   color: #fff;

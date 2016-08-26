@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  layout "contents"
 	def display
 		@user = User.find(session[:user_id])
 		@groups = @user.groups
