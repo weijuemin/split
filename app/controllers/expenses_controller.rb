@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
 	layout "contents"
+	before_action :require_login
 	def new
 		@group = Group.find(params[:group_id])
 	end

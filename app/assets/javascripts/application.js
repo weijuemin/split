@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function(){
   $('.modalWrap').on('click', function(){
     modal.fadeOut('fast');
   })
-  // Add member to a group modal, and logic to add members
+  
   var modal1 = $('.modalWrap1, .modal1');
   modal1.hide();
   $('.newmember').on('click', function(){
@@ -49,6 +49,8 @@ $(document).on('turbolinks:load', function(){
   $('.modalWrap1').on('click', function(){
     modal1.fadeOut('fast');
   })
+
+  // Add member to a group modal, and logic to add members
   $('#invite').on('keyup', function(){
     var path = window.location.pathname;
     var g_id = parseInt(path.substr(path.lastIndexOf('/') + 1));
@@ -93,7 +95,4 @@ $(document).on('turbolinks:load', function(){
     $('input[name="getUIds"]').attr('value', userIds);
     return true;
   })
-
-  // 'Add expense with a group' btn on "/users" page
-  
 })

@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   layout "contents"
+  before_action :require_login
 	def display
 		@user = User.find(session[:user_id])
 		@groups = @user.groups
@@ -20,7 +21,7 @@ class GroupsController < ApplicationController
       UserGroup.where(group: group).each do |ug|
         existingUIds << ug.user.id
       end
-      @result = User.where("id NOT IN (#{existingUIds.join(',')})").where("first_name || ' ' || last_name LIKE ?", "%#{input}%").where.not(id: current_user.id)
+      @result = User.where("id NOT IN (#{existingUIds.join(',')})").where("LOWER(first_name) || ' ' || LOWER(last_name) LIKE ?", "%#{input.downcase}%").where.not(id: current_user.id)
     else
       @result = [];
     end
@@ -28,8 +29,13 @@ class GroupsController < ApplicationController
   end
 
   def membership_create
-    userIds = params[:getUIds].split(",").map {|i| i.to_i}
     group = Group.find(params[:g_id])
+    if not params[:genUIds]
+      flash[:error] = ["Please select at least one user before you can save"]
+      redirect_to "/groups/#{group.id}"
+      return
+    end
+    userIds = params[:getUIds].split(",").map {|i| i.to_i}
     userIds.each do |id|
       UserGroup.create(user: User.find(id), group: group)
     end
