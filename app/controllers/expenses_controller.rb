@@ -6,6 +6,13 @@ class ExpensesController < ApplicationController
 
 	def create
 		group = Group.find(params[:group_id])
+		eachPaid = 0
+		group.users.each {|u| eachPaid += params["u#{u.id}"].to_i}
+		if eachPaid != params[:amount].to_i
+			flash[:errors] = ["Paid amount must add up to total!"]
+			redirect_to "/expenses/#{ params[:group_id] }/new"
+			return
+		end
 		if params[:split] == nil
 			flash[:errors] = ["Please select split option!"]
 			redirect_to "/expenses/#{ params[:group_id] }/new"

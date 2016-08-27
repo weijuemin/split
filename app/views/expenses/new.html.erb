@@ -4,7 +4,7 @@
 			<h1 class="expenseH">New Expense</h1>
 			<% if flash[:errors] %>
 				<% flash[:errors].each do |error| %>
-					<p style="text-align: center;"><%= error %></p>
+					<p style="text-align: center; color: red;"><%= error %></p>
 				<% end %>
 			<% end %>
 			<form action="/expenses/<%= @group.id %>" method="post">
@@ -20,7 +20,7 @@
 				<% @group.users.each do |user| %>
 					<div class="form-group">
 						<label for="u<%= user.id %>"><%= user.first_name %> paid:</label>
-						<input class="form-control" type="text" name="u<%= user.id %>" id="u<%= user.id %>" placeholder="Enter amount">
+						<input class="form-control" type="text" name="u<%= user.id %>" id="u<%= user.id %>paid" placeholder="Enter amount">
 					</div>
 				<% end %>
 				<div class="form-group">
