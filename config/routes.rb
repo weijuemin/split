@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   get '/expenses/:expense_id' => 'expenses#show'
   get '/expenses/:group_id/new' => 'expenses#new'
   post '/expenses/:group_id' => 'expenses#create'
-
+  get "/expenses/:exp_id/:group_id" => "expenses#edit"
+  patch "/expenses/update/:exp_id/:group_id" => "expenses#update"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
