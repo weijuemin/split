@@ -3,6 +3,10 @@ class ExpensesController < ApplicationController
 	before_action :require_login
 	def new
 		@group = Group.find(params[:group_id])
+		if !@group.users.include? current_user
+	      redirect_to "/users"
+	      return
+	    end
 	end
 
 	def create
@@ -63,12 +67,20 @@ class ExpensesController < ApplicationController
 
 	def show
 	    @exp = Expense.find(params[:expense_id])
+	    if !@exp.group.users.include? current_user
+	      redirect_to "/users"
+	      return
+	    end
 	    @record = Record.where(expense:@exp)
 	    outstanding(@exp)
 	end
 
 	def edit
 		@group = Group.find(params[:group_id])
+		if !@group.users.include? current_user
+	      redirect_to "/users"
+	      return
+	    end
 		@exp = Expense.find(params[:exp_id])
 	end
 

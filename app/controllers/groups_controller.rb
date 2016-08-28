@@ -9,6 +9,10 @@ class GroupsController < ApplicationController
 	def show
 		@group = Group.find(params[:group_id])
     @current_user = current_user
+    if !@group.users.include? @current_user
+      redirect_to "/users"
+      return
+    end
     @members = UserGroup.where(group: @group)
 	end
 
@@ -30,7 +34,7 @@ class GroupsController < ApplicationController
 
   def membership_create
     group = Group.find(params[:g_id])
-    if not params[:genUIds]
+    if not params[:getUIds]
       flash[:error] = ["Please select at least one user before you can save"]
       redirect_to "/groups/#{group.id}"
       return
