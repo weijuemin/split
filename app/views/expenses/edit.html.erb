@@ -18,10 +18,10 @@
         <label for="amount">Amount:</label>
         <input class="form-control" type="text" name="amount" id="amount" placeholder="Total amount" value="<%= @exp.amount %>">
       </div>
-      <% @group.users.each do |user| %>
+      <% @exp.users.each do |user| %>
         <div class="form-group">
           <label for="u<%= user.id %>"><%= user.first_name %> paid:</label>
-          <input class="form-control" type="text" name="u<%= user.id %>" id="u<%= user.id %>paid" placeholder="Enter amount" value="<%= @exp.records.where(user: user)[0].paid %>">
+          <input class="form-control" type="text" name="u<%= user.id %>" id="u<%= user.id %>" placeholder="Enter amount" value="<%= @exp.records.where(user: user)[0].paid %>">
         </div>
       <% end %>
       <div class="form-group">
