@@ -41,7 +41,7 @@ class SessionsController < ApplicationController
     if logged_in
       redirect_to "/users"
     else
-      redirect_to "/sessions/"
+      redirect_to "/"
     end
   end
 end
