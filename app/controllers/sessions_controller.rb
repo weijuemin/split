@@ -36,4 +36,12 @@ class SessionsController < ApplicationController
     	redirect_to "/"
     end
   end
+
+  def catch_all
+    if logged_in
+      redirect_to "/users"
+    else
+      redirect_to "/sessions/"
+    end
+  end
 end

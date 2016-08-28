@@ -27,5 +27,5 @@ Rails.application.routes.draw do
   patch "/expenses/update/:exp_id/:group_id" => "expenses#update"
 
   
-  get '*path' => 'sessions#index'
+  get '*path' => 'sessions#catch_all'
 end
